@@ -16,3 +16,37 @@ char p12[15]	=	{'M','O','S','G','Z','C','Z','D','T','D','B','O','O','T','O'};
 char p13[15]	=	{'P','D','C','R','Z','M','S','N','G','R','D','N','R','P','Z'};
 char p14[15]	= 	{'O','H','N','K','Z','W','A','T','E','R','J','G','T','R','A'};
 char *(puzzle[15]) = {p0,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14};
+
+// Cara Untuk memanggil puzzle
+void cakPuzzle(){
+	for (int pb=0;pb<15;pb++)
+		for (int pk=0;pk<15;pk++){
+		cout<<*(*(puzzle+pb)+pk)<<" ";
+		}
+	cout<<endl;
+	}
+
+
+
+//--Agar semua kata menjadi huruf kapital
+void toUpper( char *word){
+	int x = 'A' - 'a';
+	if (x < 0) x*=-1;
+	
+	for (int i=0;*(word+i);i++){
+		if ('A' < 'a'){
+		if (*(word+i) >= 'a') *(word+i)-=x;}
+		else{
+		if (*(word+i) <= 'A') *(word+i)+=x;}
+		
+	}
+}
+
+//ngehitung panjang array
+int longOf(char *word){
+	int x;
+	for (int i=0;*(word+i);i++){
+		x = i;
+	}	
+	return x;
+}
