@@ -1,3 +1,9 @@
+//Azizal Haddad 1817051011
+//Maulana Taufiqurrohman 1817051030
+//Ilham Rasidi 1817051060
+
+
+
 #include <iostream>
 using namespace std;
 char p0[15]	= 	{'T','G','B','W','W','I','N','T','E','R','W','S','E','S','N'};
@@ -19,11 +25,11 @@ char *(puzzle[15]) = {p0,p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11,p12,p13,p14};
 
 // Cara Untuk memanggil puzzle
 void cakPuzzle(){
-	for (int pb=0;pb<15;pb++)
+	for (int pb=0;pb<15;pb++){
 		for (int pk=0;pk<15;pk++){
 		cout<<*(*(puzzle+pb)+pk)<<" ";
 		}
-	cout<<endl;
+	cout<<endl;}
 	}
 
 
@@ -113,5 +119,6 @@ char word[kata][15];
 	for (int i=0;i<kata;i++){
 		toUpper(*(word+i));
 		doSearch(*(word+i));
-	}	
+	}
+return 0;
 }
