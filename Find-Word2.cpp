@@ -49,4 +49,69 @@ int longOf(char *word){
 		x = i;
 	}	
 	return x;
+}void doSearch (char *(word)){
+int banyak =0;
+	for (int pb=0;pb<15;pb++){
+		for (int pk=0;pk<15;pk++){
+			int ada[8] = {0,0,0,0,0,0,0,0};
+			if (*(*(puzzle+pb)+pk) == *(word+0)){
+				for(int i=1;i<=longOf(word);i++){
+					if (pb <(15-longOf(word)))
+					if (*(*(puzzle+(pb+i))+pk) == *(word+i)) ada[0]++; //pencarian ke selatan
+					
+					if (pb >=(0+longOf(word)))
+					if (*(*(puzzle+(pb-i))+pk) == *(word+i)) ada[1]++; //pencarian ke utara
+					
+					if (pk <(15-longOf(word)))
+					if (*(*(puzzle+pb)+(pk+i)) == *(word+i)) ada[2]++; //pencarian ke timur
+					
+					if (pk >=(0+longOf(word)))
+					if (*(*(puzzle+pb)+(pk-i)) == *(word+i)) ada[3]++; //pencarian ke barat
+					
+					if (pb <(15-longOf(word)) && pk <(15-longOf(word))) 
+					if (*(*(puzzle+(pb+i))+(pk+i)) == *(word+i)) ada[4]++; //pencarian ke tenggara
+					
+					if (pb <(15-longOf(word)) && pk >=(0+longOf(word)))
+					if (*(*(puzzle+(pb+i))+(pk-i)) == *(word+i)) ada[5]++; //pencarian ke barat daya
+					
+					if (pb >=(0+longOf(word)) && pk <(15-longOf(word)))
+					if (*(*(puzzle+(pb-i))+(pk+i)) == *(word+i)) ada[6]++; //pencarian ke timur laut
+					
+					if (pb >=(0+longOf(word)) && pk >=(0+longOf(word)))
+					if (*(*(puzzle+(pb-i))+(pk-i)) == *(word+i)) ada[7]++; //pencarian ke barat laut
+				}
+			
+				if (longOf(word) == 0){
+					banyak++;
+				}
+			
+				else {
+					for(int l=0;l<8;l++){
+						if (ada[l] == longOf(word)) banyak++;
+					}
+				}
+			}
+		}
+	}		
+	if (banyak != 0 ) cout<<"ada\n";
+	else cout<<"tidak\n";	
+}
+
+int main(){
+
+cakPuzzle();	
+int kata;
+cout<<"masukan berapa kata yang ingin dicari: ";
+cin>>kata; //banyak kata yang ingin dicari
+char word[kata][15];
+	for (int i=0;i<kata;i++){
+	        cout<<"masukan kata yang ingin dicari: ";
+		cin>>word[i];
+		longOf(*(word+i));
+	}
+
+	for (int i=0;i<kata;i++){
+		toUpper(*(word+i));
+		doSearch(*(word+i));
+	}	
 }
